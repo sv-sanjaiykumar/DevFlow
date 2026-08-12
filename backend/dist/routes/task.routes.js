@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const task_controller_js_1 = require("../controllers/task.controller.js");
+const auth_js_1 = require("../middleware/auth.js");
+const validate_js_1 = require("../middleware/validate.js");
+const task_validator_js_1 = require("../validators/task.validator.js");
+const asyncHandler_js_1 = require("../utils/asyncHandler.js");
+const router = (0, express_1.Router)();
+router.use(auth_js_1.authenticate);
+router.get('/', (0, asyncHandler_js_1.asyncHandler)(task_controller_js_1.TaskController.getTasks));
+router.post('/', (0, validate_js_1.validateRequest)(task_validator_js_1.createTaskSchema), (0, asyncHandler_js_1.asyncHandler)(task_controller_js_1.TaskController.createTask));
+router.get('/:id', (0, asyncHandler_js_1.asyncHandler)(task_controller_js_1.TaskController.getTask));
+router.patch('/:id', (0, validate_js_1.validateRequest)(task_validator_js_1.updateTaskSchema), (0, asyncHandler_js_1.asyncHandler)(task_controller_js_1.TaskController.updateTask));
+router.patch('/:id/status', (0, validate_js_1.validateRequest)(task_validator_js_1.updateTaskStatusSchema), (0, asyncHandler_js_1.asyncHandler)(task_controller_js_1.TaskController.updateTaskStatus));
+router.delete('/:id', (0, asyncHandler_js_1.asyncHandler)(task_controller_js_1.TaskController.deleteTask));
+exports.default = router;

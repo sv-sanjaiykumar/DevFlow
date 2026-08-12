@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_routes_js_1 = __importDefault(require("./auth.routes.js"));
+const project_routes_js_1 = __importDefault(require("./project.routes.js"));
+const task_routes_js_1 = __importDefault(require("./task.routes.js"));
+const comment_routes_js_1 = __importDefault(require("./comment.routes.js"));
+const dashboard_routes_js_1 = __importDefault(require("./dashboard.routes.js"));
+const ai_routes_js_1 = __importDefault(require("./ai.routes.js"));
+const router = (0, express_1.Router)();
+router.use('/auth', auth_routes_js_1.default);
+router.use('/projects', project_routes_js_1.default);
+router.use('/tasks', task_routes_js_1.default);
+router.use('/', comment_routes_js_1.default);
+router.use('/dashboard', dashboard_routes_js_1.default);
+router.use('/ai', ai_routes_js_1.default);
+exports.default = router;

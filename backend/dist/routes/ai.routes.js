@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const ai_controller_js_1 = require("../controllers/ai.controller.js");
+const auth_js_1 = require("../middleware/auth.js");
+const validate_js_1 = require("../middleware/validate.js");
+const comment_validator_js_1 = require("../validators/comment.validator.js");
+const asyncHandler_js_1 = require("../utils/asyncHandler.js");
+const router = (0, express_1.Router)();
+router.use(auth_js_1.authenticate);
+router.post('/generate-task', (0, validate_js_1.validateRequest)(comment_validator_js_1.generateTaskAISchema), (0, asyncHandler_js_1.asyncHandler)(ai_controller_js_1.AIController.generateTask));
+router.post('/tasks/confirm', (0, validate_js_1.validateRequest)(comment_validator_js_1.confirmTaskAISchema), (0, asyncHandler_js_1.asyncHandler)(ai_controller_js_1.AIController.confirmTask));
+router.post('/explain-task', (0, validate_js_1.validateRequest)(comment_validator_js_1.explainTaskAISchema), (0, asyncHandler_js_1.asyncHandler)(ai_controller_js_1.AIController.explainTask));
+exports.default = router;

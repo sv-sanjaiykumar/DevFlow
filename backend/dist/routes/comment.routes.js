@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const comment_controller_js_1 = require("../controllers/comment.controller.js");
+const auth_js_1 = require("../middleware/auth.js");
+const validate_js_1 = require("../middleware/validate.js");
+const comment_validator_js_1 = require("../validators/comment.validator.js");
+const asyncHandler_js_1 = require("../utils/asyncHandler.js");
+const router = (0, express_1.Router)();
+router.use(auth_js_1.authenticate);
+router.get('/tasks/:taskId/comments', (0, asyncHandler_js_1.asyncHandler)(comment_controller_js_1.CommentController.getComments));
+router.post('/tasks/:taskId/comments', (0, validate_js_1.validateRequest)(comment_validator_js_1.createCommentSchema), (0, asyncHandler_js_1.asyncHandler)(comment_controller_js_1.CommentController.addComment));
+router.delete('/comments/:id', (0, asyncHandler_js_1.asyncHandler)(comment_controller_js_1.CommentController.deleteComment));
+exports.default = router;

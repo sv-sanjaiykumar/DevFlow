@@ -1,0 +1,75 @@
+🚀 DevFlow Backend Server running on port 5000 [development]
+[Error Handler]: ZodError: [
+  {
+    "code": "too_small",
+    "minimum": 3,
+    "type": "string",
+    "inclusive": true,
+    "exact": false,
+    "message": "String must contain at least 3 character(s)",
+    "path": [
+      "body",
+      "username"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 6,
+    "type": "string",
+    "inclusive": true,
+    "exact": false,
+    "message": "Password must be at least 6 characters long",
+    "path": [
+      "body",
+      "password"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": false,
+    "message": "Full name is required",
+    "path": [
+      "body",
+      "fullName"
+    ]
+  }
+]
+    at get error (/Users/apple/Documents/web_apps/backend/node_modules/zod/v3/types.cjs:45:31)
+    at ZodObject.parseAsync (/Users/apple/Documents/web_apps/backend/node_modules/zod/v3/types.cjs:183:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/Users/apple/Documents/web_apps/backend/src/middleware/validate.ts:7:7) {
+  issues: [
+    {
+      code: 'too_small',
+      minimum: 3,
+      type: 'string',
+      inclusive: true,
+      exact: false,
+      message: 'String must contain at least 3 character(s)',
+      path: [Array]
+    },
+    {
+      code: 'too_small',
+      minimum: 6,
+      type: 'string',
+      inclusive: true,
+      exact: false,
+      message: 'Password must be at least 6 characters long',
+      path: [Array]
+    },
+    {
+      code: 'too_small',
+      minimum: 2,
+      type: 'string',
+      inclusive: true,
+      exact: false,
+      message: 'Full name is required',
+      path: [Array]
+    }
+  ],
+  addIssue: [Function (anonymous)],
+  addIssues: [Function (anonymous)]
+}
